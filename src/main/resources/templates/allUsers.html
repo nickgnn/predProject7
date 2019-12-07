@@ -46,7 +46,7 @@
         <td><span th:text="${user.age}"> Age </span></td>
         <td><span th:text="${user.role}"> Role </span></td>
         <td><span th:text="${user.role_id}"> Role_ID </span></td>
-        <td><a href="/" th:href="@{/all/${user.id}}">Edit</a></form></td>
+        <td><a th:href="@{'/all/' + ${user.id}}">Edit</a></form></td>
         <td><form th:action="@{/del}" method="post"> <input type="hidden" name="id" th:value="${user.id}"/> <input type="submit" value="Remove"> </form></td>
     </tr>
     </tbody>
