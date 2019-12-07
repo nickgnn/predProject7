@@ -1,11 +1,13 @@
 package ru.javamentor.predProject7.entities;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "roles", schema = "db_example")
-public class Role {
+public class Role implements GrantedAuthority {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,5 +53,10 @@ public class Role {
                 ", rolename='" + rolename + '\'' +
                 ", user=" + user +
                 '}';
+    }
+
+    @Override
+    public String getAuthority() {
+        return String.valueOf(id);
     }
 }

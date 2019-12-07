@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration new user</title>
+</head>
+<body>
+
+    <div th:if="${message}">
+        Username already exists. Please choose another username.
+    </div>
+
+    <legend><h1>Fill form below to registration new user</h1></legend>
+    <form action="#" th:action="@{/registration}" th:object="${registration}" method="post">
+        <div><label> Username : <input type="text" required placeholder="fill username" name="username"/> </label></div>
+        <div><label> Password : <input type="password" required placeholder="fill password" name="password"/> </label></div>
+        <div><label> Age : <input type="number" placeholder="optional" name="age"/> </label></div>
+        <div><input type="submit" value="Register new user"/></div>
+    </form>
+
+    <p><a href="/login" th:href="@{/login}">Log in</a></p>
+
+    <p><a href="/" th:href="@{/}">Back to home page</a></p>
+
+</body>
+</html>

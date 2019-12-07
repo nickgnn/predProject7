@@ -6,7 +6,14 @@
 </head>
 <body>
 
-<h1>Fill form below</h1>
+<p><a href="/" th:href="@{/}">Back to home page</a></p>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Log Out"/>
+</form>
+
+
+<h1>Fill form below to add new user</h1>
 <form action="#" th:action="@{/add}" th:object="${add}" method="post">
     <p>Username: <input type="text" required placeholder="fill username" name="username" /></p>
     <p>Password: <input type="password" required placeholder="fill password" name="password" /></p>
@@ -30,7 +37,7 @@
     </thead>
     <tbody>
     <!--<tr th:if="${users.empty}">-->
-        <!--<td colspan="2"> No Users Available </td>-->
+    <!--<td colspan="2"> No Users Available </td>-->
     </tr>
     <tr th:each="user : ${users}">
         <td><span th:text="${user.id}"> ID </span></td>
@@ -39,7 +46,7 @@
         <td><span th:text="${user.age}"> Age </span></td>
         <td><span th:text="${user.role}"> Role </span></td>
         <td><span th:text="${user.role_id}"> Role_ID </span></td>
-        <td><form th:action="@{/edit}" th:method="post"> <input type="hidden" name="" value="Edit"> </form></td>
+        <td><a href="/" th:href="@{/all/${user.id}}">Edit</a></form></td>
         <td><form th:action="@{/del}" method="post"> <input type="hidden" name="id" th:value="${user.id}"/> <input type="submit" value="Remove"> </form></td>
     </tr>
     </tbody>
