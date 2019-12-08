@@ -20,4 +20,9 @@ public class RoleServiceImpl implements RoleService {
     public void addRoles(Long user_id, Long role_id) throws DBException {
         roleRepository.insertRoles(user_id, role_id);
     }
+
+    @Override
+    public void deleteRoles(Long user_id, Long role_id) throws DBException {
+        roleRepository.deleteRoles(user_id, role_id);
+    }
 }

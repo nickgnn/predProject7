@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import ru.javamentor.predProject7.entities.Role;
 import ru.javamentor.predProject7.entities.User;
@@ -41,6 +42,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserById(Long id) throws DBException {
+        return userRepository.findById(id).get();
+    }
+
+    @Override
     public Long getUserIdByName(String name) throws DBException {
         return userRepository.findIdByUsername(name).get().getId();
     }
@@ -60,11 +66,6 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(user.getRole().toUpperCase());
 
-//        if (isExistsUser(name)) {
-//            System.out.println("This Username already exists, please choose another name!");
-//            throw new DBException(new Exception("This Username already exists, please choose another name!"));
-//        }
-
         if (user.getRole().contains("ADMIN")) {
             user.setRole("ROLE_ADMIN");
             role_ID = roleService.getRoleIdByName(user.getRole());
@@ -79,6 +80,46 @@ public class UserServiceImpl implements UserService {
 
         userRepository.saveAndFlush(user);
         roleService.addRoles(getUserIdByName(user.getUsername()), role_ID);
+    }
+
+    @Override
+    public void editUser(User user) throws DBException {
+        roleService.deleteRoles(user.getId(), user.getRole_id());
+
+        if (StringUtils.isEmpty(user.getUsername())) {
+            user.setUsername(getUserById(user.getId()).getUsername());
+        }
+
+        if (StringUtils.isEmpty(user.getPassword())) {
+            user.setPassword(getUserById(user.getId()).getPassword());
+        } else {
+            if (!user.getPassword().contains("$")) {
+                user.setPassword(passwordEncoder.encode(user.getPassword()));
+            }
+        }
+
+        if (ObjectUtils.isEmpty(user.getAge())) {
+            user.setAge(getUserById(user.getId()).getAge());
+        }
+
+        if (StringUtils.isEmpty(user.getRole())) {
+            user.setRole(getUserById(user.getId()).getRole());
+        } else {
+            user.setRole(user.getRole().toUpperCase());
+
+            if (user.getRole().contains("ADMIN")) {
+                user.setRole("ROLE_ADMIN");
+                user.setRole_id(roleService.getRoleIdByName(user.getRole()));
+            }
+
+            if (user.getRole().contains("USER")) {
+                user.setRole("ROLE_USER");
+                user.setRole_id(roleService.getRoleIdByName(user.getRole()));
+            }
+        }
+
+        userRepository.saveAndFlush(user);
+        roleService.addRoles(user.getId(), user.getRole_id());
     }
 
     @Override
