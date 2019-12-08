@@ -7,14 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.javamentor.predProject7.entities.Role;
 import ru.javamentor.predProject7.entities.User;
 import ru.javamentor.predProject7.exception.DBException;
 import ru.javamentor.predProject7.service.UserService;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.List;
 
 @Controller
 public class GetAllUsersController {
