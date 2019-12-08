@@ -33,19 +33,17 @@ public class GetAllUsersController {
     @PostMapping("/all/{id}")
     public String editUser(@PathVariable("id") Long id, @RequestParam String username, @RequestParam String password, @RequestParam Integer age, @RequestParam String role, Model model) throws DBException {
         User userEdited = new User(id, username, password, age, role);
-        User userById = userService.getUserById(id);
+        User userByName;
 
-        if (userService.isExistsUser(userEdited.getUsername())) {
-            if (userService.getUserByName(username).getId() != userEdited.getId()) {
+        if (userService.isExistsUser(username)) {
+            userByName = userService.getUserByName(username);
+
+            if (!userByName.getId().equals(userEdited.getId())) {
                 return "redirect:/all/{id}";
             }
         }
 
-        userById.setPassword(password);
-        userById.setAge(age);
-        userById.setRole(role);
-
-        userService.editUser(userById);
+        userService.editUser(userEdited);
 
         return "redirect:/all";
     }
