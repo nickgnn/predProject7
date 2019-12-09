@@ -4,76 +4,70 @@
     <meta charset="UTF-8">
     <title>List of Users</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <div class="container">
 
-<div class="container">
+        <p><a href="/" th:href="@{/}">Back to home page</a></p>
 
-<p><a href="/" th:href="@{/}">Back to home page</a></p>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Log Out"/>
+        </form>
 
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Log Out"/>
-</form>
+        <br>
 
-<br>
+        <div th:if="${message}">
+            Username already exists. Please choose another username.
+        </div>
 
-<div th:if="${message}">
-    Username already exists. Please choose another username.
-</div>
-
-<legend><h1>Fill form below to add new user</h1></legend>
-<form action="#" th:action="@{/add}" th:object="${add}" method="post">
-    <p><div><label> Username: <input type="text" required placeholder="fill username" name="username"/> </label></div></p>
-    <p><div><label> Password: <input type="password" required placeholder="fill password" name="password"/> </label></div></p>
-    <p><div><label> Age: <input type="number" placeholder="optional" name="age"/> </label></div></p>
-    <p><div><label> Role: <input type="text" placeholder="optional" name="role"/> </label></div></p>
-    <div><input type="submit" value="Add User"/></div>
-</form>
+        <legend><h1>Fill form below to add new user</h1></legend>
+        <form action="#" th:action="@{/add}" th:object="${add}" method="post">
+            <p><div><label> Username: <input type="text" required placeholder="fill username" name="username"/> </label></div></p>
+            <p><div><label> Password: <input type="password" required placeholder="fill password" name="password"/> </label></div></p>
+            <p><div><label> Age: <input type="number" placeholder="optional" name="age"/> </label></div></p>
+            <p><div><label> Role: <input type="text" placeholder="optional" name="role"/> </label></div></p>
+            <div><input type="submit" value="Add User"/></div>
+        </form>
 
 
-<br>
-<br>
+        <br>
+        <br>
 
-<table>
-    <thead>
-    <tr>
-        <th> ID </th>
-        <th> User </th>
-        <th> Password </th>
-        <th> Age </th>
-        <th> Role </th>
-        <th> Role_ID </th>
-        <th> Edit </th>
-        <th> Remove </th>
-    </tr>
-    </thead>
-    <tbody>
+        <table>
+            <thead>
+            <tr>
+                <th> ID </th>
+                <th> User </th>
+                <th> Password </th>
+                <th> Age </th>
+                <th> Role </th>
+                <th> Role_ID </th>
+                <th> Edit </th>
+                <th> Remove </th>
+            </tr>
+            </thead>
+            <tbody>
 
-    <tr th:each="user : ${users}">
-        <td><span th:text="${user.id}"> ID </span></td>
-        <td><span th:text="${user.username}"> Username </span></td>
-        <td><span th:text="${user.password}"> Password </span></td>
-        <td><span th:text="${user.age}"> Age </span></td>
-        <td><span th:text="${user.role}"> Role </span></td>
-        <td><span th:text="${user.role_id}"> Role_ID </span></td>
-        <td><a th:href="@{'/all/' + ${user.id}}">Edit</a></form></td>
-        <td><form th:action="@{/del}" method="post"> <input type="hidden" name="id" th:value="${user.id}"/> <input type="submit" value="Remove"> </form></td>
-    </tr>
-    </tbody>
-</table>
+            <tr th:each="user : ${users}">
+                <td><span th:text="${user.id}"> ID </span></td>
+                <td><span th:text="${user.username}"> Username </span></td>
+                <td><span th:text="${user.password}"> Password </span></td>
+                <td><span th:text="${user.age}"> Age </span></td>
+                <td><span th:text="${user.role}"> Role </span></td>
+                <td><span th:text="${user.role_id}"> Role_ID </span></td>
+                <td><a th:href="@{'/all/' + ${user.id}}">Edit</a></form></td>
+                <td><form th:action="@{/del}" method="post"> <input type="hidden" name="id" th:value="${user.id}"/> <input type="submit" value="Remove"> </form></td>
+            </tr>
+            </tbody>
+        </table>
 
-</div>
+    </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
