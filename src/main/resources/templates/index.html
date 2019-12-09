@@ -8,16 +8,26 @@
 
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div>
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Sign in</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/registration">Sign up</a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">Spring Boot + Bootstrap</a>
+            </div>
+
+
+        </div>
+    </nav>
+
     <div class="container">
-
-        <p th:text="'Hello, ' + ${myName} + '!'" />
-
-        <h1>Welcome!</h1>
-
-        <p>Click <a th:href="@{/greeting}">here</a> to see a greeting.</p>
-
-        <p>Click <a th:href="@{/all}">here</a> to see a List of Users.</p>
-
+        <h1>Welcome to App!</h1>
     </div>
 
 

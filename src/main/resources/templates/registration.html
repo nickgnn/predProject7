@@ -2,29 +2,70 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Registration new user</title>
+    <title>Sign up</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div>
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Sign in</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/registration">Sign up</a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">Spring Boot + Bootstrap</a>
+            </div>
+
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Fill form below to registration new user</h1>
+    </div>
+
     <div class="container">
 
         <div th:if="${message}">
             Username already exists. Please choose another username.
         </div>
 
-        <legend><h1>Fill form below to registration new user</h1></legend>
-        <form action="#" th:action="@{/registration}" th:object="${registration}" method="post">
-            <div><label> Username: <input type="text" required placeholder="fill username" name="username"/> </label></div>
-            <div><label> Password: <input type="password" required placeholder="fill password" name="password"/> </label></div>
-            <div><label> Age: <input type="number" placeholder="optional" name="age"/> </label></div>
-            <div><input type="submit" value="Register new user"/></div>
+        <form action="#" th:action="@{/registration}" method="post">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Username:</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm" name="username" required placeholder="Enter Username"/>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Password:</label>
+
+                <div class="col-sm-10">
+                    <input type="password" class="form-control form-control-sm" name="password" required placeholder="Enter password"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Age:</label>
+
+                <div class="col-sm-10">
+                    <input type="number" class="form-control form-control-sm" name="age" placeholder="optional"/>
+                </div>
+            </div>
+
+            <div>
+                <input type="submit" class="btn btn-primary" value="Sign up"/>
+            </div>
         </form>
-
-        <p><a href="/login" th:href="@{/login}">Log in</a></p>
-
-        <p><a href="/" th:href="@{/}">Back to home page</a></p>
 
     </div>
 
