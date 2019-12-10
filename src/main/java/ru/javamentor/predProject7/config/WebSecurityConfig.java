@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import ru.javamentor.predProject7.handler.MySimpleUrlAuthenticationSuccessHandler;
 import ru.javamentor.predProject7.service.UserService;
 
@@ -29,8 +30,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-//                    .antMatchers("/", "/registration").permitAll()
-//                    .antMatchers("/all").hasRole("ADMIN")
+                    .antMatchers("/", "/registration").permitAll()
+                    .antMatchers("/all").hasRole("ADMIN")
                     .anyRequest().permitAll()
                 .and()
                     .formLogin()
@@ -39,6 +40,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .and()
                     .logout()
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/")
                     .permitAll();
     }
 
