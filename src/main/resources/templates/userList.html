@@ -65,8 +65,16 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Role:</label>
 
-                <div class="form-group mb-2">
-                    <input type="text" class="form-control form-control-sm" name="role" placeholder="optional parameter, you can enter 'admin' or 'user' without quotes"/>
+                <div class="radio custom-control-inline">
+                    <label>
+                        <input type="radio" name="role" value="admin"/> Admin
+                    </label>
+                </div>
+
+                <div class="radio custom-control-inline">
+                    <label>
+                        <input type="radio" name="role" value="user"/> User
+                    </label>
                 </div>
             </div>
 
@@ -79,7 +87,7 @@
         <br>
         <br>
 
-        <table>
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th> ID </th>
@@ -92,15 +100,15 @@
                 <th> Remove </th>
             </tr>
             </thead>
-            <tbody>
 
+            <tbody>
             <tr th:each="user : ${users}">
-                <td><span th:text="${user.id}"> ID </span></td>
+                <td class="alert-dark"><span th:text="${user.id}"> ID </span></td>
                 <td><span th:text="${user.username}"> Username </span></td>
                 <td><span th:text="${user.password}"> Password </span></td>
                 <td><span th:text="${user.age}"> Age </span></td>
                 <td><span th:text="${user.role}"> Role </span></td>
-                <td><span th:text="${user.role_id}"> Role_ID </span></td>
+                <td class="text-muted"><span th:text="${user.role_id}"> Role_ID </span></td>
                 <td><a th:href="@{'/all/' + ${user.id}}">Edit</a></form></td>
                 <td><form th:action="@{/del}" method="post"> <input type="hidden" name="id" th:value="${user.id}"/> <input type="submit" value="Remove"> </form></td>
             </tr>

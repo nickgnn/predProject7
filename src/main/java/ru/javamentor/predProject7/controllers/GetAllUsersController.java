@@ -32,7 +32,7 @@ public class GetAllUsersController {
     }
 
     @PostMapping("/all/{id}")
-    public String editUser(@PathVariable("id") Long id, @RequestParam String username, @RequestParam String password, @RequestParam Integer age, @RequestParam String role, Model model) throws DBException {
+    public String editUser(@PathVariable("id") Long id, @RequestParam String username, @RequestParam String password, @RequestParam Integer age, @RequestParam(required = false) String role, Model model) throws DBException {
         User userEdited = new User(id, username, password, age, role);
         User userByName;
 

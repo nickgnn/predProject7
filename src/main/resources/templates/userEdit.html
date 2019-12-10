@@ -64,8 +64,16 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Role:</label>
 
-                <div class="form-group mb-2">
-                    <input type="text" class="form-control form-control-sm" name="role" placeholder="optional parameter, you can enter 'admin' or 'user' without quotes" th:value="${user.role}"/>
+                <div class="radio custom-control-inline">
+                    <label>
+                        <input type="radio" name="role" value="admin"/> Admin
+                    </label>
+                </div>
+
+                <div class="radio custom-control-inline">
+                    <label>
+                        <input type="radio" name="role" value="user"/> User
+                    </label>
                 </div>
             </div>
 
