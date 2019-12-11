@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class MainController {
-    @GetMapping("/")
-    public String index(Model model) {
+public class UserController {
+    @GetMapping("/user")
+    public String user(Model model) {
         String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
 
         String role = (String) SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
@@ -20,14 +20,10 @@ public class MainController {
 
         if (role.contains("ADMIN")) {
             model.addAttribute("isAdmin", true);
-            model.addAttribute("isUser", false);
-        }
-
-        if (role.contains("USER")){
+        } else {
             model.addAttribute("isAdmin", false);
-            model.addAttribute("isUser", true);
         }
 
-        return "index";
+        return "user";
     }
 }

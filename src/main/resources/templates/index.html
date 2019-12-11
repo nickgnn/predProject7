@@ -23,11 +23,47 @@
                 </ul>
             </div>
 
+
+            <div>
+                <ul class="nav nav-pills nav-fill">
+
+                    <span th:if="${isAdmin}">
+                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                    </span>
+
+                    <span th:if="${isUser}">
+                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                    </span>
+
+                </ul>
+            </div>
+
         </div>
     </nav>
 
-    <div class="container">
-        <h1>Welcome to App!</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+
+                    <ul class="nav flex-column">
+
+                        <span th:if="${isAdmin}">
+                            <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/user">User</a></li>
+                        </span>
+
+                        <span th:if="${isUser}">
+                            <li class="nav-item"><a class="nav-link" href="/user">User</a></li>
+                        </span>
+
+                    </ul>
+
+                </div>
+            </nav>
+
+            <h1>Welcome to App!</h1>
+        </div>
     </div>
 
 

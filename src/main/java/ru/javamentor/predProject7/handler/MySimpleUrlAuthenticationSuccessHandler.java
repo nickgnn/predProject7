@@ -61,9 +61,9 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         }
 
         if (isUser) {
-            return "/greeting";
+            return "/user";
         } else if (isAdmin) {
-            return "/all";
+            return "/admin";
         } else {
             throw new IllegalStateException();
         }

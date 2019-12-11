@@ -1,7 +1,7 @@
 package ru.javamentor.predProject7.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,25 +13,31 @@ import ru.javamentor.predProject7.exception.DBException;
 import ru.javamentor.predProject7.service.UserService;
 
 @Controller
-public class GetAllUsersController {
+public class AdminController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/all")
+    @GetMapping("/admin")
     public String getAllUsers(Model model) throws DBException {
+        String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        model.addAttribute("name", currentUsername);
+        model.addAttribute("isUser", false);
+        model.addAttribute("isAdmin", true);
+
         model.addAttribute("users", userService.getAllUsers());
 
-        return "userList";
+        return "admin";
     }
 
-    @GetMapping("/all/{id}")
+    @GetMapping("/admin/{id}")
     public String editUserView(@PathVariable("id") Long id, Model model) throws DBException {
         model.addAttribute("user", userService.getUserById(id));
 
         return "userEdit";
     }
 
-    @PostMapping("/all/{id}")
+    @PostMapping("/admin/{id}")
     public String editUser(@PathVariable("id") Long id, @RequestParam String username, @RequestParam String password, @RequestParam Integer age, @RequestParam(required = false) String role, Model model) throws DBException {
         User userEdited = new User(id, username, password, age, role);
         User userByName;
@@ -40,12 +46,12 @@ public class GetAllUsersController {
             userByName = userService.getUserByName(username);
 
             if (!userByName.getId().equals(userEdited.getId())) {
-                return "redirect:/all/{id}";
+                return "redirect:/admin/{id}";
             }
         }
 
         userService.editUser(userEdited);
 
-        return "redirect:/all";
+        return "redirect:/admin";
     }
 }

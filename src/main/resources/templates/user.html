@@ -18,8 +18,6 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav justify-content-between">
                     <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/greeting">Greeting</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/all">All Users</a></li>
                 </ul>
             </div>
 
@@ -32,17 +30,33 @@
     </nav>
 
 
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row">
 
-        <h1><p th:text="'Hello, ' + ${name} + '!' + ' This is Greeting Page'" /></h1>
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
 
-        <p><a href="/" th:href="@{/}">Back to home page</a></p>
+                    <ul class="nav flex-column">
+                        <span th:if="${isAdmin}">
+                            <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
+                        </span>
 
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Log Out"/>
-        </form>
+                        <li class="nav-item"><a class="nav-link" href="/user">User</a></li>
+                    </ul>
 
-        <p>Click <a th:href="@{/all}">here</a> to see a List of Users.</p>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h1><p th:text="'Hello, ' + ${name} + '!' + ' This is User Page'" /></h1>
+
+                <p><a href="/" th:href="@{/}">Back to home page</a></p>
+
+                <p>Click <a th:href="@{/all}">here</a> to see a List of Users.</p>
+
+            </main>
+
+        </div>
 
     </div>
 

@@ -18,11 +18,11 @@ public class AddController {
     public String add(@RequestParam String username, @RequestParam String password, @RequestParam Integer age, @RequestParam(required = false) String role, Model model) throws DBException {
         if (userService.isExistsUser(username)) {
             model.addAttribute("message", "null");
-            return "redirect:/all";
+            return "redirect:/admin";
         }
 
         userService.addUser(new User(username, password, age, role));
 
-        return "redirect:/all";
+        return "redirect:/admin";
     }
 }
