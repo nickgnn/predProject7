@@ -45,7 +45,7 @@
       <file leaf-file-name="admin.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
+            <state relative-caret-position="1860">
               <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
               <folding>
                 <element signature="e#5428#5435#1" expanded="true" />
@@ -54,25 +54,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/config/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="53" column="44" lean-forward="true" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+            <state relative-caret-position="904">
+              <caret line="56" column="1" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2295#2296#0" expanded="true" />
-                <element signature="e#2345#2346#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1280">
-              <caret line="64" column="92" selection-start-line="64" selection-start-column="92" selection-end-line="64" selection-end-column="92" />
             </state>
           </provider>
         </entry>
@@ -80,8 +69,17 @@
       <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+            <state relative-caret-position="80">
+              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/entities/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -108,7 +106,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/controllers/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="320">
-              <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -125,7 +123,7 @@
       <file leaf-file-name="user.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
+            <state relative-caret-position="780">
               <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
             </state>
           </provider>
@@ -175,14 +173,12 @@
         <option value="$PROJECT_DIR$/src/main/java/controllers/GreetingController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/controllers/GreetingController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/Application.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/controllers/AllController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/controllers/RemoveController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/exception/DBException.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/controllers/DeleteController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/config/MvcConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/repository/UserRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/entities/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/controllers/RegistrationController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/allUsers.html" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/service/UserService.java" />
@@ -209,6 +205,8 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/controllers/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/entities/User.java" />
       </list>
     </option>
   </component>
@@ -245,15 +243,18 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-14" />
-    <option name="width" value="2506" />
-    <option name="height" value="2107" />
+    <option name="y" value="21" />
+    <option name="width" value="1414" />
+    <option name="height" value="793" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -414,9 +415,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -428,7 +426,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../predProject6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../myApp" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -540,11 +538,12 @@
       <workItem from="1576127660359" duration="10408000" />
       <workItem from="1576139467061" duration="562000" />
       <workItem from="1576141974330" duration="1599000" />
+      <workItem from="1576158954667" duration="171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128861000" />
+    <option name="totallyTimeSpent" value="129032000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2208" height="1208" extended-state="6" />
@@ -568,10 +567,10 @@
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.1408582" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30597016" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32929105" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49706227" visible="true" weight="0.14418605" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49706227" visible="true" weight="0.14418605" />
       <window_info anchor="right" id="Bean Validation" order="7" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -616,8 +615,6 @@
           <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2295#2296#0" expanded="true" />
-            <element signature="e#2345#2346#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -811,13 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/entities/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/exception/DBException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -909,13 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/db.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -946,7 +929,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="780">
           <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
         </state>
       </provider>
@@ -954,13 +937,13 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/controllers/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
-          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
+        <state relative-caret-position="1860">
           <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
           <folding>
             <element signature="e#5428#5435#1" expanded="true" />
@@ -970,13 +953,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/config/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="53" column="44" lean-forward="true" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+        <state relative-caret-position="904">
+          <caret line="56" column="1" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2295#2296#0" expanded="true" />
-            <element signature="e#2345#2346#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/predProject7/entities/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
         </state>
       </provider>
     </entry>
