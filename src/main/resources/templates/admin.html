@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <title>List of Users</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../js/script.js"></script>
 
 </head>
 <body>
@@ -83,8 +93,75 @@
                                     <td><span th:text="${user.age}"> Age </span></td>
                                     <td><span th:text="${user.role}"> Role </span></td>
                                     <td class="text-muted"><span th:text="${user.role_id}"> Role_ID </span></td>
-                                    <td><a th:href="@{'/admin/' + ${user.id}}">Edit</a></form></td>
-                                    <td><form th:action="@{/del}" method="post"> <input type="hidden" name="id" th:value="${user.id}"/> <input type="submit" value="Remove"> </form></td>
+                                    <!--<td><form th:action="@{'/admin/' + ${user.id}}" method="get"><input type="hidden" name="id" th:value="${user.id}"/><input type="submit" class="btn btn-primary" value="Edit"></form></td>-->
+                                    <td>
+                                        <button class="btn btn-primary" data-toggle="modal" th:attr="data-target='#modalEdit' + ${user.id}">Edit</button>
+
+                                        <div class="modal fade" th:attr="id='modalEdit'+${user.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Edit user</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <form action="#" th:action="@{'/admin/' + ${user.id}}" th:object="${admin}" method="post">
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label form-control-sm">Username:</label>
+
+                                                                <div class="form-group mb-2">
+                                                                    <input type="text" class="form-control form-control-sm" name="username" required placeholder="enter Username" th:value="${user.username}"/>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label form-control-sm">Password:</label>
+
+                                                                <div class="form-group mb-2">
+                                                                    <input type="password" class="form-control form-control-sm" name="password" required placeholder="enter password" th:value="${user.password}"/>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label form-control-sm">Age:</label>
+
+                                                                <div class="form-group mb-2">
+                                                                    <input type="number" class="form-control form-control-sm" name="age" placeholder="optional" th:value="${user.age}"/>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label form-control-sm">Role:</label>
+
+                                                                <div class="radio custom-control-inline">
+                                                                    <label>
+                                                                        <input type="radio" name="role" value="admin"/> Admin
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="radio custom-control-inline">
+                                                                    <label>
+                                                                        <input type="radio" name="role" value="user"/> User
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </td>
+                                    <td><form th:action="@{/del}" method="post"><input type="hidden" name="id" th:value="${user.id}"/><input type="submit" class="btn btn-danger" value="Remove"></form></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -156,8 +233,17 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
 </body>
 </html>
