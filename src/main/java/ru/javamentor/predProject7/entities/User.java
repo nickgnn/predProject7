@@ -15,11 +15,11 @@ public class User {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "password")
-    private String password;
-
     @Column(name = "age")
     private Integer age;
+
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "role")
     private String role;

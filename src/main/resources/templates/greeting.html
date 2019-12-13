@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:text="'Hello, ' + ${name} + '!'" />
+
+    <p><a href="/" th:href="@{/}">Back to home page</a></p>
+
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Log Out"/>
+    </form>
+
+    <p>Click <a th:href="@{/all}">here</a> to see a List of Users.</p>
+</body>
+</html>

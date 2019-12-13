@@ -104,7 +104,6 @@ public class UserServiceImpl implements UserService {
 
         if (StringUtils.isEmpty(user.getRole())) {
             user.setRole(getUserById(user.getId()).getRole());
-            user.setRole_id(getUserById(user.getId()).getRole_id());
         } else {
             user.setRole(user.getRole().toUpperCase());
 

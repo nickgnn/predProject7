@@ -15,14 +15,14 @@ public class AddController {
     UserService userService;
 
     @PostMapping("/add")
-    public String add(@RequestParam String username, @RequestParam String password, @RequestParam Integer age, @RequestParam(required = false) String role, Model model) throws DBException {
+    public String add(@RequestParam String username, @RequestParam String password, @RequestParam Integer age, @RequestParam String role, Model model) throws DBException {
         if (userService.isExistsUser(username)) {
             model.addAttribute("message", "null");
-            return "redirect:/admin";
+            return "redirect:/all";
         }
 
         userService.addUser(new User(username, password, age, role));
 
-        return "redirect:/admin";
+        return "redirect:/all";
     }
 }

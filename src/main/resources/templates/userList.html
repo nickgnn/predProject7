@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Users</title>
+</head>
+<body>
+
+<p><a href="/" th:href="@{/}">Back to home page</a></p>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Log Out"/>
+</form>
+
+<br>
+
+<div th:if="${message}">
+    Username already exists. Please choose another username.
+</div>
+
+<legend><h1>Fill form below to add new user</h1></legend>
+<form action="#" th:action="@{/add}" th:object="${add}" method="post">
+    <p><div><label> Username: <input type="text" required placeholder="fill username" name="username"/> </label></div></p>
+    <p><div><label> Password: <input type="password" required placeholder="fill password" name="password"/> </label></div></p>
+    <p><div><label> Age: <input type="number" placeholder="optional" name="age"/> </label></div></p>
+    <p><div><label> Role: <input type="text" placeholder="optional" name="role"/> </label></div></p>
+    <div><input type="submit" value="Add User"/></div>
+</form>
+
+
+<br>
+<br>
+
+<table>
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> User </th>
+        <th> Password </th>
+        <th> Age </th>
+        <th> Role </th>
+        <th> Role_ID </th>
+        <th> Edit </th>
+        <th> Remove </th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="user : ${users}">
+        <td><span th:text="${user.id}"> ID </span></td>
+        <td><span th:text="${user.username}"> Username </span></td>
+        <td><span th:text="${user.password}"> Password </span></td>
+        <td><span th:text="${user.age}"> Age </span></td>
+        <td><span th:text="${user.role}"> Role </span></td>
+        <td><span th:text="${user.role_id}"> Role_ID </span></td>
+        <td><a th:href="@{'/all/' + ${user.id}}">Edit</a></form></td>
+        <td><form th:action="@{/del}" method="post"> <input type="hidden" name="id" th:value="${user.id}"/> <input type="submit" value="Remove"> </form></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

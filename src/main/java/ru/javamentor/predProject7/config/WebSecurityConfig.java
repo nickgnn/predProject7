@@ -9,9 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import ru.javamentor.predProject7.handler.MySimpleUrlAuthenticationSuccessHandler;
 import ru.javamentor.predProject7.service.UserService;
 
 @Configuration
@@ -23,25 +20,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @Autowired
-    AuthenticationSuccessHandler myAuthenticationSuccessHandler;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                     .antMatchers("/", "/registration").permitAll()
-                    .antMatchers("/admin").hasRole("ADMIN")
+                    .antMatchers("/all").hasRole("ADMIN")
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/login")
-                    .successHandler(myAuthenticationSuccessHandler)
                     .permitAll()
                 .and()
                     .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/")
                     .permitAll();
     }
 
@@ -51,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
-        return new MySimpleUrlAuthenticationSuccessHandler();
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }

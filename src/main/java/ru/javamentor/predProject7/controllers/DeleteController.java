@@ -16,6 +16,6 @@ public class DeleteController {
     public String delete(@RequestParam(value = "id") Long id) throws DBException {
         userService.deleteUserById(id);
 
-        return "redirect:/admin";
+        return "redirect:/all";
     }
 }

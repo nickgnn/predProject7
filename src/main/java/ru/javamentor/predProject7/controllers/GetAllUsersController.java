@@ -1,7 +1,7 @@
 package ru.javamentor.predProject7.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,32 +13,26 @@ import ru.javamentor.predProject7.exception.DBException;
 import ru.javamentor.predProject7.service.UserService;
 
 @Controller
-public class AdminController {
+public class GetAllUsersController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/admin")
+    @GetMapping("/all")
     public String getAllUsers(Model model) throws DBException {
-        String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
-
-        model.addAttribute("name", currentUsername);
-        model.addAttribute("isUser", false);
-        model.addAttribute("isAdmin", true);
-
         model.addAttribute("users", userService.getAllUsers());
 
-        return "admin";
+        return "userList";
     }
 
-    @GetMapping("/admin/{id}")
+    @GetMapping("/all/{id}")
     public String editUserView(@PathVariable("id") Long id, Model model) throws DBException {
         model.addAttribute("user", userService.getUserById(id));
 
         return "userEdit";
     }
 
-    @PostMapping("/admin/{id}")
-    public String editUser(@PathVariable("id") Long id, @RequestParam String username, @RequestParam String password, @RequestParam Integer age, @RequestParam(required = false) String role, Model model) throws DBException {
+    @PostMapping("/all/{id}")
+    public String editUser(@PathVariable("id") Long id, @RequestParam String username, @RequestParam String password, @RequestParam Integer age, @RequestParam String role, Model model) throws DBException {
         User userEdited = new User(id, username, password, age, role);
         User userByName;
 
@@ -46,12 +40,12 @@ public class AdminController {
             userByName = userService.getUserByName(username);
 
             if (!userByName.getId().equals(userEdited.getId())) {
-                return "redirect:/admin/{id}";
+                return "redirect:/all/{id}";
             }
         }
 
         userService.editUser(userEdited);
 
-        return "redirect:/admin";
+        return "redirect:/all";
     }
 }
